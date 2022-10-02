@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/home.css">
+    <title>Lego Liste</title>
+</head>
+
+<body>
+    <header>
+        <h1>Lego Liste</h1>
+        <nav class="topnav" id="myTopnav">
+            <a class="topnav__link" href="index.html">Home</a>
+            <a class="topnav__link" href="news.html">News user</a>
+            <a class="topnav__link" href="UserList.php">Liste des utilisateurs</a>
+            <a class="topnav__link" href="new.html">News Lego</a>
+            <a class="topnav__link" href="LegoList.php">Liste des lego</a>
+            <a class="topnav__link" id="right" href="connect.php">| Login</a>
+        </nav>
+    </header>
+    <main>
+        <div class="main__title">
+            <h3>Lego Liste | Ajouter Lego</h3>
+        </div>
+        <div class="form">
+            <form action="http://localhost:8000/addLego.php" method="post">
+                <label for="id">Numéro du set : </label>
+                <input type="text" name="id" placeholder="Numéro du set..." required /><br/>
+                <label for="Complet">Complet : </label>
+                <input type="radio" name="complet" id="Complet" value="oui"/>
+                <label for="Incomplet">Incomplet : </label>
+                <input type="radio" name="complet" id="Incomplet" value="non" checked/><br/>
+                <label for="Afigurine">Avec Figurine :</label>
+                <input type="radio" name="figurine" id="Afigurine" value="oui">
+                <label for="Pfigurine">Sans Figurine :</label>
+                <input type="radio" name="figurine" id="Pfigurine" checked value="non"><br/>
+                <label for="Aboite">Avec boite :</label>
+                <input type="radio" name="boite" id="Aboite" value="oui">
+                <label for="Pboite">Sans boite :</label>
+                <input type="radio" name="boite" id="Pboite" checked value="non"><br/>
+                <label for="Anotice">Avec notice :</label>
+                <input type="radio" name="notice" id="Anotice" value="oui">
+                <label for="Pnotice">Sans boite :</label>
+                <input type="radio" name="notice" id="Pnotice" checked value="non"><br/>
+                <input type="submit" value="Enregistrer" />
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

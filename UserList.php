@@ -17,6 +17,7 @@
               <a class="topnav__link" href="news.html">News user</a>
               <a class="topnav__link" href="liste des utilisateurs">Liste des utilisateurs</a>
               <a class="topnav__link" href="news.html">News Lego</a>
+              <a class="topnav__link" href="LegoList.php">Liste des lego</a>
               <a class="topnav__link" id="right" href="connect.html">| Login</a>
             </nav>
           </header>
@@ -28,6 +29,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Username</th>
+                    <th>Password</th>
                     <th>Role</th>
                     <th colspan="2">Option</th>
                 </tr>
@@ -43,8 +45,9 @@
             echo "<tr>";
             echo "<td>".$article->getId()."</td>";
             echo "<td>".$article->getUsername()."</td>";
+            echo "<td>".$article->getPassword()."</td>";
             echo "<td>".$article->getRole()."</td>";
-            echo "<td><a href='#'>modifier</a></td>";
+            echo "<td><a href='updateUser.php?id=".$article->getId()."'>modifier</a></td>";
             echo "<td><a href='deleteUser.php?id=".$article->getId()."'>Suprimer</a></td>";
             echo "</tr>";
             }

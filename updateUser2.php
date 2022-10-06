@@ -1,16 +1,14 @@
 <?php
 include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
 include 'C:\Users\luidj\Documents\perso\Motify/Manager/Usermanager.php';
+$id = $_POST['ref'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 $role = $_POST['role'];
 
-$pass2 = password_hash($password, PASSWORD_BCRYPT);
-print($username." ".$pass2);
+$pass =  password_hash($password, PASSWORD_BCRYPT);
 
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
-$newuser = new UserManager($db);
-$newuser->addUser($username, $pass2, $role);
+$deluser = new Usermanager($db);
+$deluser->updateUser($id, $username, $pass, $role);
 header('Location: UserList.php');
-
-

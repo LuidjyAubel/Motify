@@ -63,9 +63,9 @@ class User
      *
      * @return  self
      */ 
-    public function setPassword($_Password)
+    public function setPassword($Password)
     {
-        $this->_Password = password_hash($_password, PASSWORD_BCRYPT);
+        $this->_Password = password_hash($Password, PASSWORD_BCRYPT);
 
         return $this;
     }

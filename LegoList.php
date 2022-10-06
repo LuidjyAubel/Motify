@@ -16,7 +16,7 @@
               <a class="topnav__link" href="#">Home</a>
               <a class="topnav__link" href="news.html">News user</a>
               <a class="topnav__link" href="UserList.php">Liste des utilisateurs</a>
-              <a class="topnav__link" href="news.html">News Lego</a>
+              <a class="topnav__link" href="new.html">News Lego</a>
               <a class="topnav__link" href="LegoList.php">Liste des lego</a>
               <a class="topnav__link" id="right" href="connect.html">| Login</a>
             </nav>
@@ -32,7 +32,7 @@
                     <th>Figurine</th>
                     <th>Boite</th>
                     <th>Notice</th>
-                    <th colspan="2">Option</th>
+                    <th colspan="3">Option</th>
                 </tr>
             <?php
             include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
@@ -49,7 +49,8 @@
             echo "<td>".$article->getFigurine()."</td>";
             echo "<td>".$article->getBoite()."</td>";
             echo "<td>".$article->getNotice()."</td>";
-            echo "<td><a href='#'>Modifier</a></td>";
+            echo "<td><a href='afficher.php?id=".$article->getLego_id()."'>afficher</a></td>";
+            echo "<td><a href='updateLego.php?id=".$article->getLego_id()."'>Modifier</a></td>";
             echo "<td><a href='deleteLego.php?id=".$article->getLego_id()."'>Suprimer</a></td>";
             echo "</tr>";
             }

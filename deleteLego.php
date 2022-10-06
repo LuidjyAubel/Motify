@@ -6,4 +6,4 @@ $id = $_GET['id'];
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $delLego = new LegoManager($db);
 $delLego->delete($id);
-header("index.html");
+header('Location: LegoList.php');

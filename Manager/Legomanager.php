@@ -19,6 +19,16 @@ Class LegoManager{
         $stmt->execute();
         //$stmt->destruct();
     }
+    public function updateLego($id, $complet, $minifig, $boite, $notice){
+        $stmt = $this->_db->prepare("UPDATE lego set lego_complet=?, lego_figurine=?, lego_boite=?, lego_notice=? WHERE lego_id=? ;");
+        $stmt->bindParam(1, $complet);
+        $stmt->bindParam(2, $minifig);
+        $stmt->bindParam(3, $boite);
+        $stmt->bindParam(4, $notice);
+        $stmt->bindParam(5, $id);
+        $stmt->execute();
+        //$stmt->destruct();
+    }
     public function delete($Id) //:bool
     {
         $stmt = $this->_db->prepare("DELETE FROM lego WHERE lego_id= ?;");
@@ -36,6 +46,21 @@ Class LegoManager{
             $userList[] = $user;
         }
         return $userList;
+    }
+    public function getOne(): array
+    {
+        $legoList = array();
+        $id = $_GET['id'];
+        $request = $this->_db->prepare('SELECT `lego_id`, lego_complet, lego_figurine, lego_boite, lego_notice FROM lego WHERE lego_id =?;');
+
+        $request->bindParam(1, $id);
+        $request->execute();
+
+        while ($ligne = $request->fetch(PDO::FETCH_ASSOC)) {
+            $lego = new Lego($ligne);
+            $legoList[] = $lego;
+        }
+        return $legoList;
     }
     }
 ?>

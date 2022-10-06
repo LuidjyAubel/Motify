@@ -19,6 +19,15 @@ Class Usermanager{
         $stmt->execute();
         //$stmt->destruct();
     }
+    public function updateUser($id, $username, $pass, $role){
+        $stmt = $this->_db->prepare("UPDATE users set Username=?, `Password`=?, `Role`=? WHERE Id=? ;");
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $pass);
+        $stmt->bindParam(3, $role);
+        $stmt->bindParam(4, $id);
+        $stmt->execute();
+        //$stmt->destruct();
+    }
     public function delete($Id) //:bool
     {
         $stmt = $this->_db->prepare("DELETE FROM users WHERE Id= ?;");
@@ -35,7 +44,7 @@ Class Usermanager{
         if (password_verify($pass2, $hash)) {
             echo 'Le mot de passe est valide !';
             $_SESSION['connecter'] = TRUE;
-           //header('Location: musique.php');
+           header('Location: index.php');
         } else {
             session_destroy();
             echo 'Le mot de passe est invalide.';
@@ -47,12 +56,27 @@ Class Usermanager{
         {
             $userList = array();
 
-        $request = $this->_db->query('SELECT `Id`, Username, `Role` FROM users;');
+        $request = $this->_db->query('SELECT `Id`, Username, `Password`, `Role` FROM users;');
         while ($ligne = $request->fetch(PDO::FETCH_ASSOC)) {
             $user = new User($ligne);
             $userList[] = $user;
         }
         return $userList;
+    }
+    public function getOne(): array
+    {
+        $UserList = array();
+        $id = $_GET['id'];
+        $request = $this->_db->prepare('SELECT `Id`, Username, `Password`, `Role` FROM users WHERE Id= ?;');
+
+        $request->bindParam(1, $id);
+        $request->execute();
+
+        while ($ligne = $request->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User($ligne);
+            $UserList[] = $user;
+        }
+        return $UserList;
     }
     }
 ?>

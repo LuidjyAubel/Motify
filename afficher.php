@@ -1,4 +1,30 @@
-<?php
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assets/style/style.css">
+    <title>Lego Liste | Liste des afficher lego
+    </title>
+    </head>
+    <body>
+        <header>
+            <nav class="topnav" id="myTopnav">
+                <ul>
+                  <li class="title">Motify</li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="newUser.php">New user</a></li>
+                  <li><a href="UserList.php">Liste des Utilisateurs</a></li>
+                  <li><a href="newLego.php">New lego</a></li>
+                  <li><a href="LegoList.php">Liste des lego</a></li>
+                  <li style="float:right"><a href="connect.html">Login</a></li>
+                </ul>
+              </nav>
+          </header>
+          <main>
+            <div class="aff">
+                <?php
 include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
 include 'C:\Users\luidj\Documents\perso\Motify/Manager/Legomanager.php';
 $id = $_GET['id'];
@@ -41,9 +67,17 @@ $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/?
         }
         curl_close($ch2);
 
-       print('<img src="'.$obj->{'set_img_url'}.'" alt="image du set">');
+       print('<img src="'.$obj->{'set_img_url'}.'" alt="image du set" width="500" height="300">');
    
         if (curl_errno($ch)) {
             echo curl_error($ch);
         }
         curl_close($ch);  
+        ?></div>
+        </main>
+        <footer>
+        <p>Author: Luidjy Aubel</p>
+        <p><a href="aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
+      </footer>
+    </body>
+</html>

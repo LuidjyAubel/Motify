@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!$_SESSION['connecter'] == TRUE){
+    header('Location: connect.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -13,7 +19,7 @@
                 <ul>
                   <li class="title">Motify</li>
                   <li><a href="index.html">Home</a></li>
-                  <li><a href="news.html">New user</a></li>
+                  <li><a href="newUser.php">New user</a></li>
                   <li><a href="UserList.php">Liste des Utilisateurs</a></li>
                   <li><a href="new.html">New lego</a></li>
                   <li><a href="LegoList.php">Liste des lego</a></li>
@@ -28,7 +34,7 @@
                     <label for="username">Username</label>  
                         <input type="text" name="username" placeholder="Username">
                     <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="mot de passe">
+                        <input type="password" name="password" placeholder="mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Le mot de passe doit contenir nombre, maj, min et 8 caractère minimum">
                     <label for="role">Role</label>
                         <select name="role">
                             <option value="USER">USER</option>

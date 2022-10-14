@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!$_SESSION['connecter'] == TRUE){
+    header('Location: connect.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -15,9 +21,9 @@
             <ul>
               <li class="title">Motify</li>
               <li><a href="index.html">Home</a></li>
-              <li><a href="news.html">New user</a></li>
+              <li><a href="newUser.php">New user</a></li>
               <li><a href="UserList.php">Liste des Utilisateurs</a></li>
-              <li><a href="new.html">New lego</a></li>
+              <li><a href="newLego.php">New lego</a></li>
               <li><a href="LegoList.php">Liste des lego</a></li>
               <li style="float:right"><a href="connect.html">Login</a></li>
             </ul>

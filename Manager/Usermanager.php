@@ -44,7 +44,7 @@ Class Usermanager{
         if (password_verify($pass2, $hash)) {
             echo 'Le mot de passe est valide !';
             $_SESSION['connecter'] = TRUE;
-           header('Location: LegoList.php');
+            header("Location: LegoList.php");
         } else {
             session_destroy();
             echo 'Le mot de passe est invalide.';

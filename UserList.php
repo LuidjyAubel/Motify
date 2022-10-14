@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="Assets/style/style.css">
     <title>Lego Liste | Liste des utilisateurs
     </title>
     </head>
     <body>
         <header>
-            <h1>Lego Liste | Liste des utilisateurs</h1>
             <nav class="topnav" id="myTopnav">
-              <a class="topnav__link" href="#">Home</a>
-              <a class="topnav__link" href="news.html">News user</a>
-              <a class="topnav__link" href="liste des utilisateurs">Liste des utilisateurs</a>
-              <a class="topnav__link" href="news.html">News Lego</a>
-              <a class="topnav__link" href="LegoList.php">Liste des lego</a>
-              <a class="topnav__link" id="right" href="connect.html">| Login</a>
-            </nav>
+                <ul>
+                  <li class="title">Motify</li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="news.html">New user</a></li>
+                  <li><a href="UserList.php">Liste des Utilisateurs</a></li>
+                  <li><a href="new.html">New lego</a></li>
+                  <li><a href="LegoList.php">Liste des lego</a></li>
+                  <li style="float:right"><a href="connect.html">Login</a></li>
+                </ul>
+              </nav>
           </header>
           <main>
-            <div class="main__title">
+            <div class="formulaire">
                 <h3>Liste Lego | Liste des utilisateurs</h3>
-            </div>
-            <table border="1px">
+            
+            <table>
                 <tr>
                     <th>Id</th>
                     <th>Username</th>
@@ -34,6 +35,8 @@
                     <th colspan="2">Option</th>
                 </tr>
             <?php
+            session_start();
+            if ($_SESSION['connecter'] == TRUE) {
             include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
             include 'C:\Users\luidj\Documents\perso\Motify/Manager/Usermanager.php';
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
@@ -51,8 +54,16 @@
             echo "<td><a href='deleteUser.php?id=".$article->getId()."'>Suprimer</a></td>";
             echo "</tr>";
             }
+        }else{
+            header('Location: connect.html');
+            session_abort();
+        }
             ?>
-            </table>
+            </table></div>
         </main>
+        <footer>
+        <p>Author: Luidjy Aubel</p>
+        <p><a href="aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
+      </footer>
     </body>
 </html>

@@ -19,13 +19,26 @@ USE `motify`;
 
 -- Listage de la structure de la table motify. lego
 CREATE TABLE IF NOT EXISTS `lego` (
-  `lego_id` char(10) NOT NULL,
-  `lego_complet` char(3) NOT NULL DEFAULT 'non',
-  `lego_figurine` char(3) NOT NULL DEFAULT 'non',
-  `lego_boite` char(3) NOT NULL DEFAULT 'non',
-  `lego_notice` char(3) NOT NULL DEFAULT 'non',
+  `lego_id` char(50) NOT NULL DEFAULT '',
+  `lego_complet` char(3) NOT NULL DEFAULT '0',
+  `lego_figurine` char(3) NOT NULL DEFAULT '0',
+  `lego_boite` char(3) NOT NULL DEFAULT '0',
+  `lego_notice` char(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`lego_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Listage des données de la table motify.lego : ~8 rows (environ)
+/*!40000 ALTER TABLE `lego` DISABLE KEYS */;
+INSERT INTO `lego` (`lego_id`, `lego_complet`, `lego_figurine`, `lego_boite`, `lego_notice`) VALUES
+	('75030-1', 'oui', 'oui', 'non', 'non'),
+	('75032-1', 'oui', 'oui', 'oui', 'oui'),
+	('75033-1', 'oui', 'oui', 'non', 'non'),
+	('75161-1', 'oui', 'oui', 'non', 'non'),
+	('75310-1', 'oui', 'oui', 'oui', 'oui'),
+	('7654-1', 'oui', 'oui', 'oui', 'oui'),
+	('7658-1', 'oui', 'oui', 'oui', 'non'),
+	('8014-1', 'oui', 'non', 'non', 'non');
+/*!40000 ALTER TABLE `lego` ENABLE KEYS */;
 
 -- Listage de la structure de la table motify. users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -34,13 +47,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Password` varchar(100) NOT NULL,
   `Role` varchar(20) NOT NULL DEFAULT 'USER',
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Listage des données de la table motify.users : ~2 rows (environ)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`Id`, `Username`, `Password`, `Role`) VALUES
 	(3, 'admin', '$2y$10$dWfCUktsm06RvB0uajVBneuoxN1v2XNuVpyrOhNGRklNDP0pikC.y', 'ADMIN'),
-	(4, 'demo', '$2y$10$BJxLD0AGsf8be5ZkOAj.WOxDoeRcyf9jmEDEa9faX5pnTmJ3O6PQG', 'USER');
+	(5, 'lazerto', '$2y$10$SrQ9GGCQnc3fdNCP5yHAk.0Qrj28J.oboGXJ3rH3oOZ7j1C/z1g7.', 'ADMIN');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

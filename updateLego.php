@@ -18,7 +18,14 @@
                   <li><a href="UserList.php">Liste des Utilisateurs</a></li>
                   <li><a href="newLego.php">New lego</a></li>
                   <li><a href="LegoList.php">Liste des lego</a></li>
-                  <li style="float:right"><a href="connect.html">Login</a></li>
+                  <?php
+                    session_start();
+                    if (!$_SESSION['connecter'] == TRUE) {
+                        header('Location: connect.html');
+                        }else{
+                        echo  '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
+                        }
+                  ?>
                 </ul>
               </nav>
           </header>
@@ -96,9 +103,9 @@ foreach($requete as $items){
     }?>
     </div>
         </main>
-        <footer>
+       <!-- <footer>
         <p>Author: Luidjy Aubel</p>
-        <p><a href="aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
-      </footer>
+        <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
+      </footer>-->
     </body>
 </html>

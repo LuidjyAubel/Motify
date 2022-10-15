@@ -1,5 +1,5 @@
 <?php
-include 'C:\Users\luidj\Documents\perso\Motify/Classes/User.php';
+include(dirname(__DIR__).'/Classes/User.php');
 Class Usermanager{
     private $_db;
     

@@ -1,6 +1,6 @@
 <?php
-include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
-include 'C:\Users\luidj\Documents\perso\Motify/Manager/Legomanager.php';
+include 'conf.php';
+include 'Manager/Legomanager.php';
 $id = $_POST['id'];
 $complet = $_POST['complet'];
 $figurine = $_POST['figurine'];

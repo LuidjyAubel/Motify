@@ -33,8 +33,9 @@
           <main>
             <div class="formulaire">
                 <h3>Liste Lego | Modifier un lego</h3><?php
-include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
-include 'C:\Users\luidj\Documents\perso\Motify/Manager/Legomanager.php';
+
+include 'conf.php';
+include 'Manager/Legomanager.php';
 $id = $_GET['id'];
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $Legomanager = new LegoManager($db);

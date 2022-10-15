@@ -1,5 +1,5 @@
 <?php
-include 'C:\Users\luidj\Documents\perso\Motify/Classes/Lego.php';
+include (dirname(__DIR__).'/Classes/Lego.php');
 Class LegoManager{
     private $_db;
     

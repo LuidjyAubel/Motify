@@ -43,10 +43,11 @@
                     <th colspan="2">Option</th>
                 </tr>
             <?php
-            include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
-            include 'C:\Users\luidj\Documents\perso\Motify/Manager/Usermanager.php';
+
+            include('conf.php');
+            include(dirname(__DIR__).'/Motify/Manager/Usermanager.php');
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
-            $Usermanager = new UserManager($db);
+            $Usermanager = new Usermanager($db);
             $tabuser = $Usermanager->getList();
 
                 foreach($tabuser as $article)

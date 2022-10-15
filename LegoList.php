@@ -44,9 +44,8 @@
                     <th colspan="3">Option</th>
                 </tr>
             <?php
-
-            include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
-            include 'C:\Users\luidj\Documents\perso\Motify/Manager/Legomanager.php';
+            include('conf.php');
+            include(dirname(__DIR__).'/Motify/Manager/Legomanager.php');
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
             $Legomanager = new LegoManager($db);
             $tablego = $Legomanager->getList();

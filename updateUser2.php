@@ -1,6 +1,6 @@
 <?php
-include 'C:\Users\luidj\Documents\perso\Motify/conf.php';
-include 'C:\Users\luidj\Documents\perso\Motify/Manager/Usermanager.php';
+include 'conf.php';
+include 'Manager/Usermanager.php';
 $id = $_POST['ref'];
 $username = $_POST['username'];
 $password = $_POST['password'];

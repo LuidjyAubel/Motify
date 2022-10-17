@@ -16,7 +16,7 @@
                   <li><a href="index.html">Home</a></li>
                   <li><a href="newUser.php">New user</a></li>
                   <li><a href="UserList.php">Liste des Utilisateurs</a></li>
-                  <li><a href="new.html">New lego</a></li>
+                  <li><a href="newLego.html">New lego</a></li>
                   <li><a href="LegoList.php">Liste des lego</a></li>
                   <?php
                     session_start();

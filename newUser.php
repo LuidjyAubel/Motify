@@ -32,7 +32,7 @@
           <main>
             <div class="formulaire">
                 <h3>Motify | Ajouter un utilisateur</h3>
-                <form action="http://localhost:8000/addUser.php" method="post">
+                <form action="addUser.php" method="post">
                     <label for="username">Username</label>  
                         <input type="text" name="username" placeholder="Username">
                     <label for="password">Password</label>

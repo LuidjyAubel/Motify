@@ -1,10 +1,13 @@
 <?php
 include(dirname(__DIR__).'/Classes/User.php');
+include(dirname(__DIR__).'/lib/MotifyLogging.php');
 Class Usermanager{
     private $_db;
+    private $Logging;
     
     public function __construct(PDO $db){
         $this->setDb($db);
+        $Logging = new MotifyLogging();
     }
     public function setDb($db){
         $this->_db = $db;
@@ -17,6 +20,7 @@ Class Usermanager{
         $stmt->bindParam(2, $pass);
         $stmt->bindParam(3, $role);
         $stmt->execute();
+        MotifyLogging::Message("Creating user");
         //$stmt->destruct();
     }
     public function updateUser($id, $username, $pass, $role){

@@ -12,20 +12,24 @@
     public function getFichier(){
         return $this->fichier;
     }
-    static function message(String $msg){
+    static function message(string $msg){
         writeLog("Message",$msg);
     }
-    static function error(){
-
+    static function Connecting(int $id, string $username){
+        $msg = "id : ".$id." Username : ".$username."has been connected";
+        writeLog("Connecting", $msg);
+    }
+    static function error($msg){
+        writeLog("Error", $msg);
     }
     static function warning(){
-
+        writeLog("Warnnig", $msg);
     }
 
     function createFichier(){
         touch(dirname(__DIR__).'/log/MotifyLog.log');
     }
-    function writeLog(String $type,String $msg){
-	   file_put_contents($this->getFichier(),$type." : ".$message,FILE_APPEND) ;
+    function writeLog(string $type,string $msg){
+	   file_put_contents($this->getFichier(),"[".$type."] : ".$message,FILE_APPEND);
     }
 }

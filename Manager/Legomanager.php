@@ -17,7 +17,6 @@ Class LegoManager{
         $stmt->bindParam(4, $boite);
         $stmt->bindParam(5, $notice);
         $stmt->execute();
-        //$stmt->destruct();
     }
     public function updateLego($id, $complet, $minifig, $boite, $notice){
         $stmt = $this->_db->prepare("UPDATE lego set lego_complet=?, lego_figurine=?, lego_boite=?, lego_notice=? WHERE lego_id=? ;");
@@ -27,9 +26,8 @@ Class LegoManager{
         $stmt->bindParam(4, $notice);
         $stmt->bindParam(5, $id);
         $stmt->execute();
-        //$stmt->destruct();
     }
-    public function delete($Id) //:bool
+    public function delete($Id)
     {
         $stmt = $this->_db->prepare("DELETE FROM lego WHERE lego_id= ?;");
         $stmt->bindParam(1, $Id);

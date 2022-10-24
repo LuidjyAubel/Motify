@@ -9,20 +9,27 @@ class User
     public function __construct(array $ligne){
         $this->hydrate($ligne);
     }
-
     public function hydrate(array $ligne){
         foreach ($ligne as $key => $value) {
              $method = "set".ucfirst($key);
             if (method_exists($this, $method)){
-                //le dollar on appel la methode dynamiquement car il est dans la variable method 
                 $this->$method($value);
             }
         }
     }
+    /**
+     * Get the value of _Id
+     */
     public function getId()
     {
         return $this->_Id;
     }
+    /**
+     * Set the value of _Id
+     * 
+     * @param int $Id
+     * @return self
+     */
     public function setId($Id)
     {
         $this->_Id = $Id;
@@ -41,6 +48,7 @@ class User
     /**
      * Set the value of _Username
      *
+     * @param string $_Username
      * @return  self
      */ 
     public function setUsername($_Username)
@@ -61,6 +69,7 @@ class User
     /**
      * Set the value of _Password
      *
+     * @param string $Password
      * @return  self
      */ 
     public function setPassword($Password)
@@ -69,12 +78,21 @@ class User
 
         return $this;
     }
+    /**
+     * Set the value of _Role
+     * 
+     * @param $_Role
+     * @return self
+     */
     public function setRole($_Role)
     {
         $this->_Role = $_Role;
 
         return $this;
     }
+    /**
+     * Get the value of _Role
+     */
     public function getRole()
     {
         return $this->_Role;

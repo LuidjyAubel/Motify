@@ -11,7 +11,11 @@ class Lego
     {
         $this->hydrate($ligne);
     }
-
+    /**
+     * Use key of database table for set attributs with the data in database
+     * Use : all Setter
+     * @param array $ligne
+     */
     public function hydrate(array $ligne)
     {
         foreach ($ligne as $key => $value) {

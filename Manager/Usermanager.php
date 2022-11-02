@@ -1,5 +1,6 @@
 <?php
 include(dirname(__DIR__) . '/Classes/User.php');
+include(dirname(__DIR__).'/lib/MotifyLogging.php');
 class Usermanager
 {
     private $_db;
@@ -12,6 +13,12 @@ class Usermanager
     {
         $this->_db = $db;
     }
+    /**
+     * Adding a user with parameter getting in form
+     * @param string $user
+     * @param string $pass
+     * @param string $role
+     */
     public function addUser($user, $pass, $role)
     {
         $stmt = $this->_db->prepare('INSERT INTO users (Username, `Password`, `Role`) VALUES (?, ?, ?);');
@@ -19,7 +26,15 @@ class Usermanager
         $stmt->bindParam(2, $pass);
         $stmt->bindParam(3, $role);
         $stmt->execute();
+        MotifyLogging::message();
     }
+    /**
+     * Updating the value of the object
+     * @param int $id
+     * @param string $username
+     * @param string $pass
+     * @param string $role
+     */
     public function updateUser($id, $username, $pass, $role)
     {
         $stmt = $this->_db->prepare("UPDATE users set Username=?, `Password`=?, `Role`=? WHERE Id=? ;");
@@ -29,12 +44,21 @@ class Usermanager
         $stmt->bindParam(4, $id);
         $stmt->execute();
     }
+    /**
+     * Delecting an object user using id
+     * @param int $Id
+     */
     public function delete($Id)
     {
         $stmt = $this->_db->prepare("DELETE FROM users WHERE Id= ?;");
         $stmt->bindParam(1, $Id);
         $stmt->execute();
     }
+    /**
+     * Check the user credencial
+     * @param string $MAil Username of the user
+     * @param string $pass2 Password of the user
+     */
     public function connect($MAiL, $pass2)
     {
         session_start();
@@ -54,6 +78,10 @@ class Usermanager
             }
         }
     }
+    /**
+     * Get an array that contain all of user
+     * @return array $userList
+     */
     public function getList(): array
     {
         $userList = array();
@@ -65,6 +93,10 @@ class Usermanager
         }
         return $userList;
     }
+        /**
+     * Get an array that contain one user
+     * @return array $userList
+     */
     public function getOne(): array
     {
         $UserList = array();

@@ -14,6 +14,7 @@
     }
     static function message(string $msg){
         writeLog("Message",$msg);
+        print('Message :'.$msg);
     }
     static function Connecting(int $id, string $username){
         $msg = "id : ".$id." Username : ".$username."has been connected";

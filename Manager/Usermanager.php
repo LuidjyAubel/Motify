@@ -15,6 +15,8 @@ class Usermanager
     }
     public function addUser($user, $pass, $role)
     {
+        $logger = new MotifyLogging();
+        $logger->warning("adding new user : ".$user);
         $stmt = $this->_db->prepare('INSERT INTO users (Username, `Password`, `Role`) VALUES (?, ?, ?);');
         $stmt->bindParam(1, $user);
         $stmt->bindParam(2, $pass);
@@ -23,6 +25,8 @@ class Usermanager
     }
     public function updateUser($id, $username, $pass, $role)
     {
+        $logger = new MotifyLogging();
+        $logger->warning("Updating user : ".$id);
         $stmt = $this->_db->prepare("UPDATE users set Username=?, `Password`=?, `Role`=? WHERE Id=? ;");
         $stmt->bindParam(1, $username);
         $stmt->bindParam(2, $pass);
@@ -32,6 +36,8 @@ class Usermanager
     }
     public function delete($Id)
     {
+        $logger = new MotifyLogging();
+        $logger->warning("delecting the user with id : ".$Id);
         $stmt = $this->_db->prepare("DELETE FROM users WHERE Id= ?;");
         $stmt->bindParam(1, $Id);
         $stmt->execute();
@@ -60,6 +66,8 @@ class Usermanager
     }
     public function getList(): array
     {
+        $logger = new MotifyLogging();
+        $logger->message("display list of user");
         $userList = array();
 
         $request = $this->_db->query('SELECT `Id`, Username, `Password`, `Role` FROM users;');
@@ -71,8 +79,10 @@ class Usermanager
     }
     public function getOne(): array
     {
+        $logger = new MotifyLogging();
         $UserList = array();
         $id = $_GET['id'];
+        $logger->message("get the data for the id : ".$id);
         $request = $this->_db->prepare('SELECT `Id`, Username, `Password`, `Role` FROM users WHERE Id= ?;');
 
         $request->bindParam(1, $id);

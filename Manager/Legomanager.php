@@ -1,5 +1,6 @@
 <?php
 include (dirname(__DIR__).'/Classes/Lego.php');
+include(dirname(__DIR__).'/lib/MotifyLogging.php');
 Class LegoManager{
     private $_db;
     
@@ -10,6 +11,8 @@ Class LegoManager{
         $this->_db = $db;
     }
     public function addLego($id, $complet, $minifig, $boite, $notice){
+        $logger = new MotifyLogging();
+        $logger->warning("Adding new lego : ".$id);
         $stmt = $this->_db->prepare('INSERT INTO lego (lego_id, lego_complet, lego_figurine, lego_boite, lego_notice) VALUES (?, ?, ?, ?, ?);');
         $stmt->bindParam(1, $id);
         $stmt->bindParam(2, $complet);
@@ -19,6 +22,8 @@ Class LegoManager{
         $stmt->execute();
     }
     public function updateLego($id, $complet, $minifig, $boite, $notice){
+        $logger = new MotifyLogging();
+        $logger->warning("Updating lego : ".$id);
         $stmt = $this->_db->prepare("UPDATE lego set lego_complet=?, lego_figurine=?, lego_boite=?, lego_notice=? WHERE lego_id=? ;");
         $stmt->bindParam(1, $complet);
         $stmt->bindParam(2, $minifig);
@@ -29,12 +34,16 @@ Class LegoManager{
     }
     public function delete($Id)
     {
+        $logger = new MotifyLogging();
+        $logger->warning("Delecting lego : ".$Id);
         $stmt = $this->_db->prepare("DELETE FROM lego WHERE lego_id= ?;");
         $stmt->bindParam(1, $Id);
         $stmt->execute();
     }
         public function getList(): array
         {
+            $logger = new MotifyLogging();
+            $logger->warning("display liste of lego");
         $request = $this->_db->query('SELECT `lego_id`, lego_complet, lego_figurine, lego_boite, lego_notice FROM lego;');
 
         $userList = array();
@@ -47,8 +56,10 @@ Class LegoManager{
     }
     public function getOne(): array
     {
+        $logger = new MotifyLogging();
         $legoList = array();
         $id = $_GET['id'];
+        $logger->warning("display the lego : ".$id);
         $request = $this->_db->prepare('SELECT `lego_id`, lego_complet, lego_figurine, lego_boite, lego_notice FROM lego WHERE lego_id =?;');
 
         $request->bindParam(1, $id);

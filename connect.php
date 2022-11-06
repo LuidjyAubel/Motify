@@ -8,4 +8,6 @@ print($username." ".$password);
 
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $newuser = new UserManager($db);
+$username = stripslashes($username);
+$username = htmlspecialchars($username);
 $newuser->connect($username, $password);

@@ -10,6 +10,11 @@ print($username." ".$pass2);
 
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $newuser = new UserManager($db);
+
+//$username = trim($username);
+$username = stripslashes($username);
+$username = htmlspecialchars($username);
+
 $newuser->addUser($username, $pass2, $role);
 header('Location: UserList.php');
 

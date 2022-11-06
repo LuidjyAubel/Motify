@@ -1,5 +1,6 @@
 <?php
 include(dirname(__DIR__) . '/Classes/User.php');
+include(dirname(__DIR__).'/lib/MotifyLogging.php');
 class Usermanager
 {
     private $_db;
@@ -38,6 +39,7 @@ class Usermanager
     public function connect($MAiL, $pass2)
     {
         session_start();
+        $logger = new MotifyLogging();
         $_SESSION["connecter"] = FALSE;
         $requete = $this->_db->query('SELECT `Id`, `Username`, `Password` FROM users');
         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
@@ -46,9 +48,11 @@ class Usermanager
                 if (password_verify($pass2, $hash)) {
                     echo 'Le mot de passe est valide !';
                     $_SESSION['connecter'] = TRUE;
+                    $logger->Connecting($MAiL);
                     header("Location: LegoList.php");
                 } else {
                     session_destroy();
+                    $logger->error($MAiL." connection fail");
                     echo 'Le mot de passe est invalide.';
                 }
             }

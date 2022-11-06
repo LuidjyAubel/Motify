@@ -1,35 +1,30 @@
 <?php
  class MotifyLogging{
-    private $fichier = 'MotifyLog.log';
+    private $fichier = '/log/MotifyLog.log';
 
     public function __construct(){
-        createFichier();
+        $this->createFichier();
     }
-
     public function setFichier($_fichier){
         $this->fichier = $_fichier;
     }
-    public function getFichier(){
+    public  function getFichier(){
         return $this->fichier;
     }
-    static function message(string $msg){
-        writeLog("Message",$msg);
+     function message(string $msg){
+        file_put_contents(dirname(__DIR__).$this->getFichier(),"[Message] : ".$msg.PHP_EOL,FILE_APPEND);
     }
-    static function Connecting(int $id, string $username){
-        $msg = "id : ".$id." Username : ".$username."has been connected";
-        writeLog("Connecting", $msg);
+     function Connecting(string $username){
+        $msg = $username." has been connected";
+        file_put_contents(dirname(__DIR__).$this->getFichier(),"[Connecting] : ".$msg.PHP_EOL,FILE_APPEND);
     }
-    static function error($msg){
-        writeLog("Error", $msg);
+     function error($msg){
+        file_put_contents(dirname(__DIR__).$this->getFichier(),"[Error] : ".$msg.PHP_EOL,FILE_APPEND);
     }
-    static function warning(){
-        writeLog("Warnnig", $msg);
+     function warning($msg){
+        file_put_contents(dirname(__DIR__).$this->getFichier(),"[Warnnig] : ".$msg.PHP_EOL,FILE_APPEND);
     }
-
     function createFichier(){
         touch(dirname(__DIR__).'/log/MotifyLog.log');
-    }
-    function writeLog(string $type,string $msg){
-	   file_put_contents($this->getFichier(),"[".$type."] : ".$message,FILE_APPEND);
     }
 }

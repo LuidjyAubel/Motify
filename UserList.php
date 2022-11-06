@@ -46,6 +46,9 @@
 
             include('conf.php');
             include(dirname(__DIR__).'/Motify/Manager/Usermanager.php');
+            include(dirname(__DIR__).'/Motify/lib/MotifyLogging.php');
+            $logger = new MotifyLogging();
+            $logger->message("Userlist");
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
             $Usermanager = new Usermanager($db);
             $tabuser = $Usermanager->getList();

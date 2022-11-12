@@ -1,7 +1,21 @@
 # Modify 
 
-![logo de Motify](/Assets/picture/motify.png "Logo de Motify")
+<img src=".//Assets/picture/motify.png" alt="drawing" style="width:200px;"/>
 
-motify is an application for manage his lego set 
+_________________________________
 
-the application using the API Rebrickable 
+
+motify is an application that allows you to manage your lego collection
+
+this application using the API Rebrickable, and it was created in PHP with CURL
+
+_____
+## Installation
+
+### __First method__ :
+- Clonning the github repository
+- Copy and rename conf-sample.php in conf.php
+- modify the value in the conf.php
+
+**If you want to do a local test of this application in Motify directory execute php -S localhost:8000**
+ 

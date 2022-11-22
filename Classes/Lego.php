@@ -1,4 +1,5 @@
 <?php
+namespace Classes\Lego\Lego{
 class Lego
 {
     private $Id;
@@ -115,4 +116,5 @@ class Lego
 
         return $this;
     }
+}
 }

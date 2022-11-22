@@ -1,6 +1,8 @@
 <?php
-include(dirname(__DIR__) . '/Classes/User.php');
-include(dirname(__DIR__).'/lib/MotifyLogging.php');
+namespace Manager\Usermanager{
+use Classes\User\User;
+use lib\MotifyLogging\MotifyLogging\MotifyLogging;
+use \PDO;
 class Usermanager
 {
     private $_db;
@@ -94,4 +96,5 @@ class Usermanager
         }
         return $UserList;
     }
+}
 }

@@ -33,8 +33,8 @@
           <main>
             <div class="formulaire">
                 <h3>Liste Lego | Modifier un utilisateur</h3><?php
-include 'conf.php';
-include 'Manager/Usermanager.php';
+use Conf;
+use Manager\Usermanager\Usermanager;
 $id = $_GET['id'];
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $Usermanager = new Usermanager($db);

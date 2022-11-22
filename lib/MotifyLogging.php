@@ -1,4 +1,5 @@
 <?php
+namespace lib\MotifyLogging\MotifyLogging{
  class MotifyLogging{
     private $fichier = '/log/MotifyLog.log';
 
@@ -30,4 +31,5 @@
     function createFichier(){
         touch(dirname(__DIR__).'/log/MotifyLog.log');
     }
+}
 }

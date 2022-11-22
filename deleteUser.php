@@ -1,6 +1,6 @@
 <?php
-include 'conf.php';
-include 'Manager/Usermanager.php';
+use Conf;
+use Manager\Usermanager\Usermanager;
 $id = $_GET['id'];
 
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);

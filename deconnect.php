@@ -1,5 +1,5 @@
 <?php
-use lib\MotifyLogging\MotifyLogging\MotifyLogging;
+include('lib/MotifyLogging.php');
 $logger = new MotifyLogging();
 $logger->warning("Disconnecting");
 session_start();

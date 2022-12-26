@@ -43,8 +43,9 @@
                     <th colspan="2">Option</th>
                 </tr>
             <?php
-            use Conf;
-            use Manager\Usermanager\Usermanager;
+
+            include('conf.php');
+            include(dirname(__DIR__).'/Motify/Manager/Usermanager.php');
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
             $Usermanager = new Usermanager($db);
             $tabuser = $Usermanager->getList();

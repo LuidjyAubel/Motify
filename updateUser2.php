@@ -1,6 +1,6 @@
 <?php
-use Conf;
-use Manager\Usermanager\Usermanager;
+include 'conf.php';
+include 'Manager/Usermanager.php';
 $id = $_POST['ref'];
 $username = $_POST['username'];
 $password = $_POST['password'];

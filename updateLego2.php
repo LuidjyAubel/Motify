@@ -1,6 +1,6 @@
 <?php
-use Conf;
-use Manager\Legomanager\LegoManager;
+include 'conf.php';
+include 'Manager/Legomanager.php';
 $id = $_POST['ref'];
 $complet = $_POST['complet'];
 $figurine = $_POST['figurine'];

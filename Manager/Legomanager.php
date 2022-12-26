@@ -1,9 +1,6 @@
 <?php
-
-namespace Manager\Legomanager{
-    use lib\MotifyLogging\MotifyLogging\MotifyLogging;
-   use Classes\Lego\Lego\Lego;
-   use \PDO;
+include (dirname(__DIR__).'/Classes/Lego.php');
+include(dirname(__DIR__).'/lib/MotifyLogging.php');
 Class LegoManager{
     private $_db;
     
@@ -38,7 +35,7 @@ Class LegoManager{
     public function delete($Id)
     {
         $logger = new MotifyLogging();
-        $logger->warning("DLegoelecting lego : ".$Id);
+        $logger->warning("Delecting lego : ".$Id);
         $stmt = $this->_db->prepare("DELETE FROM lego WHERE lego_id= ?;");
         $stmt->bindParam(1, $Id);
         $stmt->execute();
@@ -75,5 +72,4 @@ Class LegoManager{
         return $legoList;
     }
     }
-}
 ?>

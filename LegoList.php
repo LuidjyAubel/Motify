@@ -44,8 +44,8 @@
                     <th colspan="3">Option</th>
                 </tr>
             <?php
-            use Conf;
-            use Manager\Legomanager\LegoManager;
+            include('conf.php');
+            include(dirname(__DIR__).'/Motify/Manager/Legomanager.php');
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
             $Legomanager = new LegoManager($db);
             $tablego = $Legomanager->getList();

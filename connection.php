@@ -18,27 +18,33 @@
                   <li><a href="UserList.php">Liste des Utilisateurs</a></li>
                   <li><a href="newLego.php">New lego</a></li>
                   <li><a href="LegoList.php">Liste des lego</a></li>
-                  <li style="float:right"><a href="connect.html">Login</a></li>
+                  <li style="float:right"><a href="connection.php">Login</a></li>
                 </ul>
               </nav>
           </header>
           <main>
+            <?php
+            session_start();
+            if(isset($_SESSION['ERROR'])){
+                print("<div class='error'><h3>/!\\ ".$_SESSION['ERROR']."</h3></div>");
+                unset($_SESSION['ERROR']);
+            }
+            ?>
             <div class="main__title">
                 <h3>Motify | Connexion</h3>
-                <form action="http://localhost:8000/connect.php" method="post">
+                <form name="connection" action="http://localhost:8000/connect.php" method="post">
                     <label for="username">Username</label>    
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" placeholder="Username" required>
                     
                     <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="mot de passe">
+                        <input type="password" name="password" placeholder="mot de passe" required>
                     
-                    <input type="submit"/>
+                    <input type="submit" id="btn"/>
                 </form>
             </div>
         </main>
         <footer>
             <p>Author: Luidjy Aubel</p>
-            <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
           </footer>
     </body>
 </html>

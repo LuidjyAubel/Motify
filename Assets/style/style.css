@@ -152,3 +152,6 @@ tr:hover{
     position: relative;
     bottom: 15em;
   }
+  .error h3{
+    color:rgb(255, 0, 0);
+  }

@@ -42,6 +42,36 @@ class Usermanager
         $stmt->bindParam(1, $Id);
         $stmt->execute();
     }
+    public function co($MAiL, $pass2){
+        session_start();
+        $logger = new MotifyLogging();
+        $_SESSION["connecter"] = FALSE;
+        $request = $this->_db->prepare('SELECT `Id`, Username, `Password`, `Role` FROM users WHERE Username= ?;');
+        $request->bindParam(1, $MAiL);
+        $request->execute();
+
+        $row = $request->rowCount();
+			$fetch = $request->fetch();
+			if($row > 0) {
+                $hash = $fetch['Password'];
+                if (password_verify($pass2, $hash)) {
+                    echo 'Le mot de passe est valide !';
+                    $_SESSION['connecter'] = TRUE;
+                    $logger->Connecting($MAiL);
+                    header("Location: LegoList.php");
+                }else {
+                    $_SESSION['ERROR'] = "Le Mot de passe est invalide !";
+                    header("Location: connection.php");
+                  //  session_destroy();
+                    $logger->error($MAiL."Mot de passe invalide");
+                }
+			} else{
+				$_SESSION['ERROR'] = "L'utilisateur n'existe pas !";
+                header("Location: connection.php");
+                $logger->error($MAiL." L'utilisateur n'existe pas !");
+               //session_destroy();
+			}
+    }
     public function connect($MAiL, $pass2)
     {
         session_start();
@@ -56,10 +86,11 @@ class Usermanager
                     $_SESSION['connecter'] = TRUE;
                     $logger->Connecting($MAiL);
                     header("Location: LegoList.php");
-                } else {
+                }else {
+                    $error = 'Le mot de passe est invalide.';
+                    header("Location: connection.php");
                     session_destroy();
-                    $logger->error($MAiL." connection fail");
-                    echo 'Le mot de passe est invalide.';
+                    $logger->error($MAiL." Connection fail");
                 }
             }
         }

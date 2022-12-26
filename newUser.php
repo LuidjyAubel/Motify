@@ -21,7 +21,7 @@
                   <?php
                     session_start();
                     if (!$_SESSION['connecter'] == TRUE) {
-                        header('Location: connect.html');
+                        header('Location: connection.php');
                         }else{
                         echo  '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
                         }

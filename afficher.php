@@ -22,7 +22,7 @@
                   <?php
                   session_start();
                   if (!$_SESSION['connecter'] == TRUE) {
-                      header('Location: connect.html');
+                      header('Location: connection.php');
                       }else{
                       echo  '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
                       }
@@ -81,7 +81,9 @@ $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/?
             echo curl_error($ch);
         }
         curl_close($ch);  
-        ?></div>
+        ?>
+        <a class="button1" href='LegoList.php'>Retour à la liste</a>
+        </div>
         </main>
         <footer>
         <p>Author: Luidjy Aubel</p>

@@ -32,7 +32,7 @@
             ?>
             <div class="main__title">
                 <h3>Motify | Connexion</h3>
-                <form name="connection" action="http://localhost:8000/connect.php" method="post">
+                <form name="connection" action="connect.php" method="post">
                     <label for="username">Username</label>    
                         <input type="text" name="username" placeholder="Username" required>
                     

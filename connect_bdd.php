@@ -1,7 +1,8 @@
 <?php
-include('conf.php');
+use Conf;
+use \PDO;
 
-$DataBase = mysqli_connect(DBHOST, DBUSER, DBPASSWORD);
+$DataBase = new PDO(DBHOST, DBUSER, DBPASSWORD);
 
 if(mysqli_connect_error()){
     print('Connexion à la base de donnée: fail'.mysqli_connect_error());

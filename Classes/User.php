@@ -1,4 +1,5 @@
 <?php
+namespace Classes\User{
 class User
 {
     private $_Id;
@@ -97,5 +98,6 @@ class User
     {
         return $this->_Role;
     }
+}
 }
 ?>

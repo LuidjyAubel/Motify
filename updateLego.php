@@ -41,7 +41,7 @@ $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $Legomanager = new LegoManager($db);
 $requete = $Legomanager->getOne();
 foreach($requete as $items){
-        print("<form method='POST' action='http://localhost:8000/updateLego2.php'>");
+        print("<form method='POST' action='updateLego2.php'>");
         print("<label for='ref'>Lego Reférence : </label>");
         print("<input type='text' name='ref' value=".$items->getLego_id()."><br><br>");
 

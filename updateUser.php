@@ -40,7 +40,7 @@ $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $Usermanager = new Usermanager($db);
 $requete = $Usermanager->getOne();
 foreach($requete as $items){
-        print("<form method='POST' action='http://localhost:8000/updateUser2.php'>");
+        print("<form method='POST' action='updateUser2.php'>");
         print("<label for='ref'>User id : </label>");
         print("<input type='text' name='ref' value=".$items->getId()."><br><br>");
         print("<label for='username'>Username : </label>");

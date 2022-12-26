@@ -34,7 +34,7 @@
     <main>
         <div class="formulaire">
             <h3>Lego Liste | Ajouter un Lego</h3>
-            <form action="http://localhost:8000/addLego.php" method="post">
+            <form action="addLego.php" method="post">
                 <label for="id">Numéro du set : </label>
                 <input type="text" name="id" placeholder="Numéro du set..." required /><br/>
                 <label for="Complet">Complet : </label>

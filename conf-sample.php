@@ -1,6 +1,6 @@
 <?php
 // Database information
-define("DBHOST","");
+define("DBHOST","mysql:dbname=;host=");
 define("DBUSER","");
 define("DBPASSWORD","");
 // Api Key of rebrickable

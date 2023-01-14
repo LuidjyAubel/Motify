@@ -15,7 +15,7 @@
         <nav class="topnav" id="myTopnav">
             <ul>
               <li class="title">Motify</li>
-              <li><a href="index.html">Home</a></li>
+              <li><a href="index.php">Home</a></li>
               <li><a href="newUser.php">New user</a></li>
               <li><a href="UserList.php">Liste des Utilisateurs</a></li>
               <li><a href="newLego.php">New lego</a></li>
@@ -27,6 +27,9 @@
                         }else{
                         echo  '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
                         }
+                    if ((isset($_SESSION['Role']))&&($_SESSION['Role'] != 'ADMIN')){
+                        header('Location: index.php');
+                    }
                   ?>
             </ul>
           </nav>

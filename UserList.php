@@ -11,16 +11,16 @@
     </head>
     <body>
         <header>
+            <?php session_start();?>
             <nav class="topnav" id="myTopnav">
                 <ul>
                   <li class="title">Motify</li>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="newUser.php">New user</a></li>
+                  <li><a href="index.php">Home</a></li>
+                  <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="newUser.php">New user</a></li>';}?>
                   <li><a href="UserList.php">Liste des Utilisateurs</a></li>
-                  <li><a href="newLego.php">New lego</a></li>
+                  <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="newLego.php">New lego</a></li>';}?>
                   <li><a href="LegoList.php">Liste des lego</a></li>
                   <?php
-                    session_start();
                     if (!$_SESSION['connecter'] == TRUE) {
                         header('Location: connection.php');
                         }else{
@@ -40,7 +40,7 @@
                     <th>Username</th>
                     <th>Password</th>
                     <th>Role</th>
-                    <th colspan="2">Option</th>
+                    <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<th colspan="2">Option</th>';}?>
                 </tr>
             <?php
 
@@ -57,8 +57,10 @@
             echo "<td>".$article->getUsername()."</td>";
             echo "<td>".$article->getPassword()."</td>";
             echo "<td>".$article->getRole()."</td>";
+            if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){
             echo "<td><a href='updateUser.php?id=".$article->getId()."'>modifier</a></td>";
             echo "<td><a href='deleteUser.php?id=".$article->getId()."'>Suprimer</a></td>";
+            }
             echo "</tr>";
             }
             ?>

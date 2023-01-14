@@ -43,7 +43,7 @@ Class LegoManager{
         public function getList(): array
         {
             $logger = new MotifyLogging();
-            $logger->warning("display liste of lego");
+            $logger->warning("Display liste of lego");
         $request = $this->_db->query('SELECT `lego_id`, lego_complet, lego_figurine, lego_boite, lego_notice FROM lego;');
 
         $userList = array();
@@ -59,7 +59,7 @@ Class LegoManager{
         $logger = new MotifyLogging();
         $legoList = array();
         $id = $_GET['id'];
-        $logger->warning("display the lego : ".$id);
+        $logger->warning("Display the lego : ".$id);
         $request = $this->_db->prepare('SELECT `lego_id`, lego_complet, lego_figurine, lego_boite, lego_notice FROM lego WHERE lego_id =?;');
 
         $request->bindParam(1, $id);

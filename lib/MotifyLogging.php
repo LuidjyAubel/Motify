@@ -15,7 +15,7 @@
         return $this->fichier;
     }
      function message(string $msg){
-        file_put_contents(dirname(__DIR__).$this->getFichier(),"[".$_SERVER['REMOTE_ADDR']."][".date( "d/m/Y H:i:s")."][Message] : ".$msg.PHP_EOL,FILE_APPEND);
+        file_put_contents(dirname(__DIR__).$this->getFichier(),"[".$_SERVER['REMOTE_ADDR']."][".date( "d/m/Y H:i:s")."][Info] : ".$msg.PHP_EOL,FILE_APPEND);
     }
      function Connecting(string $username){
         $msg = $username." has been connected";
@@ -25,7 +25,7 @@
         file_put_contents(dirname(__DIR__).$this->getFichier(),"[".$_SERVER['REMOTE_ADDR']."][".date( "d/m/Y H:i:s")."][Error] : ".$msg.PHP_EOL,FILE_APPEND);
     }
      function warning($msg){
-        file_put_contents(dirname(__DIR__).$this->getFichier(),"[".$_SERVER['REMOTE_ADDR']."][".date( "d/m/Y H:i:s")."][Warnnig] : ".$msg.PHP_EOL,FILE_APPEND);
+        file_put_contents(dirname(__DIR__).$this->getFichier(),"[".$_SERVER['REMOTE_ADDR']."][".date( "d/m/Y H:i:s")."][Warn] : ".$msg.PHP_EOL,FILE_APPEND);
     }
     function createFichier(){
         touch(dirname(__DIR__).'/log/MotifyLog.log');

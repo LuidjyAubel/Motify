@@ -10,21 +10,26 @@
     </head>
     <body>
         <header>
+            <?php session_start();?>
             <nav class="topnav" id="myTopnav">
                 <ul>
                   <li class="title">Motify</li>
-                  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
                   <li><a href="newUser.php">New user</a></li>
-                  <li><a href="UserList.php">Liste des Utilisateurs</a></li>
+                  <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="UserList.php">Liste des Utilisateurs</a></li>';}?>
                   <li><a href="newLego.php">New lego</a></li>
-                  <li><a href="LegoList.php">Liste des lego</a></li>
-                  <li style="float:right"><a href="connection.php">Login</a></li>
+                  <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="LegoList.php">Liste des lego</a></li>';}?>
+                  <?php
+                    if ((isset($_SESSION['connecter']))&&($_SESSION['connecter'] == TRUE)){
+                      echo '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
+                    }else{
+                      echo '<li style="float:right"><a href="connection.php">Login</a></li>';
+                    }?>
                 </ul>
               </nav>
           </header>
           <main>
             <?php
-            session_start();
             if(isset($_SESSION['ERROR'])){
                 print("<div class='error'><h3>/!\\ ".$_SESSION['ERROR']."</h3></div>");
                 unset($_SESSION['ERROR']);

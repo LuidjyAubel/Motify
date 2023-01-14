@@ -16,7 +16,7 @@ class Usermanager
     public function addUser($user, $pass, $role)
     {
         $logger = new MotifyLogging();
-        $logger->warning("adding new user : ".$user);
+        $logger->warning("Adding new user : ".$user);
         $stmt = $this->_db->prepare('INSERT INTO users (Username, `Password`, `Role`) VALUES (?, ?, ?);');
         $stmt->bindParam(1, $user);
         $stmt->bindParam(2, $pass);
@@ -37,7 +37,7 @@ class Usermanager
     public function delete($Id)
     {
         $logger = new MotifyLogging();
-        $logger->warning("delecting the user with id : ".$Id);
+        $logger->warning("Delecting the user with id : ".$Id);
         $stmt = $this->_db->prepare("DELETE FROM users WHERE Id= ?;");
         $stmt->bindParam(1, $Id);
         $stmt->execute();
@@ -57,6 +57,7 @@ class Usermanager
                 if (password_verify($pass2, $hash)) {
                     echo 'Le mot de passe est valide !';
                     $_SESSION['connecter'] = TRUE;
+                    $_SESSION['Role'] = $fetch['Role'];
                     $logger->Connecting($MAiL);
                     header("Location: LegoList.php");
                 }else {
@@ -72,33 +73,10 @@ class Usermanager
                //session_destroy();
 			}
     }
-    public function connect($MAiL, $pass2)
-    {
-        session_start();
-        $logger = new MotifyLogging();
-        $_SESSION["connecter"] = FALSE;
-        $requete = $this->_db->query('SELECT `Id`, `Username`, `Password` FROM users');
-        while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-            if ($MAiL == $ligne['Username']) {
-                $hash = $ligne['Password'];
-                if (password_verify($pass2, $hash)) {
-                    echo 'Le mot de passe est valide !';
-                    $_SESSION['connecter'] = TRUE;
-                    $logger->Connecting($MAiL);
-                    header("Location: LegoList.php");
-                }else {
-                    $error = 'Le mot de passe est invalide.';
-                    header("Location: connection.php");
-                    session_destroy();
-                    $logger->error($MAiL." Connection fail");
-                }
-            }
-        }
-    }
     public function getList(): array
     {
         $logger = new MotifyLogging();
-        $logger->message("display list of user");
+        $logger->message("Display list of user");
         $userList = array();
 
         $request = $this->_db->query('SELECT `Id`, Username, `Password`, `Role` FROM users;');
@@ -113,7 +91,7 @@ class Usermanager
         $logger = new MotifyLogging();
         $UserList = array();
         $id = $_GET['id'];
-        $logger->message("get the data for the id : ".$id);
+        $logger->message("Get the data for the id : ".$id);
         $request = $this->_db->prepare('SELECT `Id`, Username, `Password`, `Role` FROM users WHERE Id= ?;');
 
         $request->bindParam(1, $id);

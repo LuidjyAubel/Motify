@@ -11,7 +11,7 @@ print($username." ".$pass2);
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $newuser = new UserManager($db);
 
-//$username = trim($username);
+$username = trim($username);
 $username = stripslashes($username);
 $username = htmlspecialchars($username);
 

@@ -59,7 +59,7 @@ Class LegoManager{
         $logger = new MotifyLogging();
         $legoList = array();
         $id = $_GET['id'];
-        $logger->warning("Display the lego : ".$id);
+        $logger->message("Display the lego : ".$id);
         $request = $this->_db->prepare('SELECT `lego_id`, lego_complet, lego_figurine, lego_boite, lego_notice FROM lego WHERE lego_id =?;');
 
         $request->bindParam(1, $id);

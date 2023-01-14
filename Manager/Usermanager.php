@@ -57,6 +57,7 @@ class Usermanager
                 if (password_verify($pass2, $hash)) {
                     echo 'Le mot de passe est valide !';
                     $_SESSION['connecter'] = TRUE;
+                    $_SESSION['Username'] = $fetch['Username'];
                     $_SESSION['Role'] = $fetch['Role'];
                     $logger->Connecting($MAiL);
                     header("Location: LegoList.php");

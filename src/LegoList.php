@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Assets/style/style.css">
-    <link rel="icon" type="image/x-png" href="Assets/picture/motify.png">
-    <title>Lego Liste | Liste des utilisateurs
+    <link rel="stylesheet" href="../Assets/style/style.css">
+    <link rel="icon" type="image/x-png" href="../Assets/picture/motify.png">
+    <title>Lego Liste | Liste des Lego
     </title>
     </head>
     <body>
         <header>
-            <?php session_start();?>
-            <nav class="topnav" id="myTopnav">
+          <?php session_start();?>
+        <nav class="topnav" id="myTopnav">
                 <ul>
                   <li class="title">Motify</li>
-                  <li><a href="index.php">Home</a></li>
+                  <li><a href="../index.php">Home</a></li>
                   <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="newUser.php">New user</a></li>';}?>
                   <li><a href="UserList.php">Liste des Utilisateurs</a></li>
                   <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="newLego.php">New lego</a></li>';}?>
@@ -32,41 +32,45 @@
           </header>
           <main>
             <div class="formulaire">
-                <h3>Liste Lego | Liste des utilisateurs</h3>
+                <h3>Liste Lego | Liste des Lego</h3>
             
-            <table>
+            <table border="1px">
                 <tr>
-                    <th>Id</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Role</th>
-                    <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<th colspan="2">Option</th>';}?>
+                    <th>Numéro du set</th>
+                    <th>Complet</th>
+                    <th>Figurine</th>
+                    <th>Boite</th>
+                    <th>Notice</th>
+                    <th colspan="3">Option</th>
                 </tr>
             <?php
-
-            include('conf.php');
-            include(dirname(__DIR__).'/Motify/Manager/Usermanager.php');
+            include('../config/conf.php');
+            include('../Classes/Manager/Legomanager.php');
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
-            $Usermanager = new Usermanager($db);
-            $tabuser = $Usermanager->getList();
-
-                foreach($tabuser as $article)
+            $Legomanager = new LegoManager($db);
+            $tablego = $Legomanager->getList();
+            $attr = array();
+                foreach($tablego as $article)
             {
             echo "<tr>";
-            echo "<td>".$article->getId()."</td>";
-            echo "<td>".$article->getUsername()."</td>";
-            echo "<td>".$article->getPassword()."</td>";
-            echo "<td>".$article->getRole()."</td>";
+            echo "<td>".$article->getLego_id()."</td>";
+            echo "<td>".$article->getComplet()."</td>";
+            echo "<td>".$article->getFigurine()."</td>";
+            echo "<td>".$article->getBoite()."</td>";
+            echo "<td>".$article->getNotice()."</td>";
+            echo "<td><a href='afficher.php?id=".$article->getLego_id()."'>afficher</a></td>";
             if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){
-            echo "<td><a href='updateUser.php?id=".$article->getId()."'>modifier</a></td>";
-            echo "<td><a href='deleteUser.php?id=".$article->getId()."'>Suprimer</a></td>";
+            echo "<td><a href='updateLego.php?id=".$article->getLego_id()."'>Modifier</a></td>";
+            echo "<td><a href='deleteLego.php?id=".$article->getLego_id()."'>Suprimer</a></td>";
             }
             echo "</tr>";
+            $attr = array($article->getLego_id(),$article->getComplet(),$article->getFigurine(),$article->getBoite(),$article->getNotice());
             }
+           // var_dump($attr);
             ?>
             </table></div>
         </main>
-<!--        <footer>
+      <!--  <footer>
         <p>Author: Luidjy Aubel</p>
         <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
       </footer>-->

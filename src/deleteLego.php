@@ -1,6 +1,6 @@
 <?php
-include 'conf.php';
-include 'Manager/Legomanager.php';
+include '../config/conf.php';
+include '../Classes/Manager/Legomanager.php';
 $id = $_GET['id'];
 
 $db = new PDO(DBHOST, DBUSER, DBPASSWORD);

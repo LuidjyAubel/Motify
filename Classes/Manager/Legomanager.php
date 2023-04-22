@@ -1,6 +1,6 @@
 <?php
-include (dirname(__DIR__).'/Classes/Lego.php');
-include(dirname(__DIR__).'/lib/MotifyLogging.php');
+include ('../Classes/Entity/Lego.php');
+include('../lib/MotifyLogging.php');
 Class LegoManager{
     private $_db;
     

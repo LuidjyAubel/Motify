@@ -20,22 +20,22 @@
               <ul>
                 <li class="title">Motify</li>
                 <li><a href="index.php">Home</a></li>
-                <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="newUser.php">New user</a></li>';}?>
-                <li><a href="UserList.php">Liste des Utilisateurs</a></li>
-                <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="newLego.php">New lego</a></li>';}?>
-                <li><a href="LegoList.php">Liste des lego</a></li>
+                <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="./src/newUser.php">New user</a></li>';}?>
+                <li><a href="./src/UserList.php">Liste des Utilisateurs</a></li>
+                <?php if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){echo'<li><a href="./src/newLego.php">New lego</a></li>';}?>
+                <li><a href="./src/LegoList.php">Liste des lego</a></li>
                 <?php
                     if ((isset($_SESSION['connecter']))&&($_SESSION['connecter'] == TRUE)){
-                      echo '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
+                      echo '<li style="float:right"><a href="./src/deconnect.php">Logout</a></li>';
                     }else{
-                      echo '<li style="float:right"><a href="connection.php">Login</a></li>';
+                      echo '<li style="float:right"><a href="./src/connection.php">Login</a></li>';
                     }?>
               </ul>
             </nav>
           </header>
           <main>
             <div class="main">
-                    <a class="button1" href="connection.php"><span class="TxtBtn">Acceder à la liste des lego</span></a>
+                    <a class="button1" href="./src/connection.php"><span class="TxtBtn">Acceder à la liste des lego</span></a>
             <div class="text">
               <p>Motify est une application web qui permet d'organiser ses set de lego</p>
               <p>L'application utilise l'API Rebrickable</p>

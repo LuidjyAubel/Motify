@@ -1,6 +1,6 @@
 <?php
-include(dirname(__DIR__) . '/Classes/User.php');
-include(dirname(__DIR__).'/lib/MotifyLogging.php');
+include('../Classes/Entity/User.php');
+include('../lib/MotifyLogging.php');
 class Usermanager
 {
     private $_db;

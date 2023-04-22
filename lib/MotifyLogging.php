@@ -3,8 +3,8 @@
     private $fichier = '/log/MotifyLog.log';
 
     public function __construct(){
-        if (!file_exists("log")){
-            mkdir("log",0772);
+        if (!file_exists("../log")){
+            mkdir("../log",0772);
         }
         $this->createFichier();
     }

@@ -103,6 +103,7 @@ foreach($requete as $items){
             print("<label for='ANotice'>Lego Avec Notice : </label>");
             print("<input type='radio' name='notice' id='ANotice' value='oui'>");
         }
+        print('<input type="hidden" name="test" value='.$items->getLego_id().'>');
         print("<input type='submit' value='Valider'>");
         print("</form>");
     }?>

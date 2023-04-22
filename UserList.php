@@ -66,9 +66,9 @@
             ?>
             </table></div>
         </main>
-        <footer>
+<!--        <footer>
         <p>Author: Luidjy Aubel</p>
         <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
-      </footer>
+      </footer>-->
     </body>
 </html>

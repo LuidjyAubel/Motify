@@ -49,7 +49,7 @@
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
             $Legomanager = new LegoManager($db);
             $tablego = $Legomanager->getList();
-
+            $attr = array();
                 foreach($tablego as $article)
             {
             echo "<tr>";
@@ -64,13 +64,14 @@
             echo "<td><a href='deleteLego.php?id=".$article->getLego_id()."'>Suprimer</a></td>";
             }
             echo "</tr>";
+            $attr = array($article->getLego_id(),$article->getComplet(),$article->getFigurine(),$article->getBoite(),$article->getNotice());
             }
             ?>
             </table></div>
         </main>
-        <footer>
+      <!--  <footer>
         <p>Author: Luidjy Aubel</p>
         <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
-      </footer>
+      </footer>-->
     </body>
 </html>

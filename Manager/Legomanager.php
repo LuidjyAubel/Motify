@@ -21,15 +21,16 @@ Class LegoManager{
         $stmt->bindParam(5, $notice);
         $stmt->execute();
     }
-    public function updateLego($id, $complet, $minifig, $boite, $notice){
+    public function updateLego($id, $complet, $minifig, $boite, $notice, $origin){
         $logger = new MotifyLogging();
         $logger->warning("Updating lego : ".$id);
-        $stmt = $this->_db->prepare("UPDATE lego set lego_complet=?, lego_figurine=?, lego_boite=?, lego_notice=? WHERE lego_id=? ;");
-        $stmt->bindParam(1, $complet);
-        $stmt->bindParam(2, $minifig);
-        $stmt->bindParam(3, $boite);
-        $stmt->bindParam(4, $notice);
-        $stmt->bindParam(5, $id);
+        $stmt = $this->_db->prepare("UPDATE lego set lego_id=?, lego_complet=?, lego_figurine=?, lego_boite=?, lego_notice=? WHERE lego_id=? ;");
+        $stmt->bindParam(1, $id);
+        $stmt->bindParam(2, $complet);
+        $stmt->bindParam(3, $minifig);
+        $stmt->bindParam(4, $boite);
+        $stmt->bindParam(5, $notice);
+        $stmt->bindParam(6, $origin);
         $stmt->execute();
     }
     public function delete($Id)

@@ -64,9 +64,10 @@
             echo "<td><a href='deleteLego.php?id=".$article->getLego_id()."'>Suprimer</a></td>";
             }
             echo "</tr>";
-            $attr = array($article->getLego_id(),$article->getComplet(),$article->getFigurine(),$article->getBoite(),$article->getNotice());
             }
-           // var_dump($attr);
+            print("<form method='POST' action='csv.php'>");
+            print("<input type='submit' value='Exporter en CSV'>");
+            print("</form>");
             ?>
             </table></div>
         </main>

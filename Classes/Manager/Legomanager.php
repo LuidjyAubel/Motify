@@ -55,6 +55,16 @@ Class LegoManager{
         }
         return $userList;
     }
+    public function exportCSV($list){
+        $logger = new MotifyLogging();
+        $fp = fopen('php://output', 'w');
+        fputcsv($fp, array("Id", "Complet", "Figurine","Boite","Notice"));
+        foreach ($list as $fields) {
+            fputcsv($fp, array($fields->getLego_id(), $fields->getComplet(), $fields->getFigurine(),$fields->getBoite(),$fields->getNotice()));
+        }
+        $logger->message("Export list of lego in CSV");
+        fclose($fp);
+    }
     public function getOne(): array
     {
         $logger = new MotifyLogging();

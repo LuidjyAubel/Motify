@@ -12,6 +12,9 @@ Class LegoManager{
     }
     public function addLego($id, $complet, $minifig, $boite, $notice){
         $logger = new MotifyLogging();
+        if(!strpos($id, "-1")){
+            $id = $id."-1";
+        }
         $logger->warning("Adding new lego : ".$id);
         $stmt = $this->_db->prepare('INSERT INTO lego (lego_id, lego_complet, lego_figurine, lego_boite, lego_notice) VALUES (?, ?, ?, ?, ?);');
         $stmt->bindParam(1, $id);

@@ -61,9 +61,21 @@ Class LegoManager{
     public function exportCSV($list){
         $logger = new MotifyLogging();
         $fp = fopen('php://output', 'w');
-        fputcsv($fp, array("Id", "Complet", "Figurine","Boite","Notice"));
+        fputcsv($fp, array("Id", "Complet", "Figurine","Boite","Notice", "Date"));
         foreach ($list as $fields) {
-            fputcsv($fp, array($fields->getLego_id(), $fields->getComplet(), $fields->getFigurine(),$fields->getBoite(),$fields->getNotice()));
+            $url = "https://rebrickable.com/api/v3/lego/sets/".$fields->getLego_id()."/?key=".API_KEY;
+
+            $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); //bidouille cause localhost
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); //bidouille cause localhost
+
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $output = curl_exec($ch);
+         $obj = json_decode($output);
+            fputcsv($fp, array($fields->getLego_id(), $fields->getComplet(), $fields->getFigurine(),$fields->getBoite(),$fields->getNotice(), $obj->{'year'}));
         }
         $logger->message("Export list of lego in CSV");
         fclose($fp);

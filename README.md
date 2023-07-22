@@ -11,12 +11,25 @@ motify is an application that allows you to manage your lego collection
 this application using the API Rebrickable, and it was created in PHP with CURL
 
 _____
+## Configuration
+
+In the PHP.ini you have to activate (and download on linux) the extentions :
+
+- CURL (`extension=curl`)
+- PDO MYSQL (`extension=mysqli`)
+
+On the Mariadb server import the databases file who is in the Database repository.
+
+In this database you have a sample user :
+```
+Username : admin
+Password : admin
+```
 ## Installation
 
-### __First method__ :
 - Clonning the github repository
 - Copy and rename conf-sample.php in conf.php
 - modify the value in the conf.php
 
 **If you want to do a local test of this application in Motify directory execute php -S localhost:8000**
- 
+

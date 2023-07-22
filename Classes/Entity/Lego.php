@@ -6,6 +6,7 @@ class Lego
     private $figurine;
     private $boite;
     private $notice;
+    private $date;
 
     public function __construct(array $ligne)
     {
@@ -112,6 +113,26 @@ class Lego
     public function setLego_notice($notice)
     {
         $this->notice = $notice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of date
+     */ 
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set the value of date
+     *
+     * @return  self
+     */ 
+    public function setlego_date($date)
+    {
+        $this->date = $date;
 
         return $this;
     }

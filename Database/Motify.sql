@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `lego` (
   `lego_figurine` char(3) NOT NULL DEFAULT '0',
   `lego_boite` char(3) NOT NULL DEFAULT '0',
   `lego_notice` char(3) NOT NULL DEFAULT '0',
+  `lego_date` char(4) NOT NULL DEFAULT '0000',
   PRIMARY KEY (`lego_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,7 +54,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`Id`, `Username`, `Password`, `Role`) VALUES
 	(3, 'admin', '$2y$10$dWfCUktsm06RvB0uajVBneuoxN1v2XNuVpyrOhNGRklNDP0pikC.y', 'ADMIN'),
-	(5, 'lazerto', '$2y$10$SrQ9GGCQnc3fdNCP5yHAk.0Qrj28J.oboGXJ3rH3oOZ7j1C/z1g7.', 'ADMIN');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Assets/style/style.css">
     <link rel="icon" type="image/x-png" href="../Assets/picture/motify.png">
-    <title>Lego Liste | Liste des afficher lego
+    <title>Lego Liste | afficher lego
     </title>
     </head>
     <body>
@@ -40,7 +40,6 @@ $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
 $Legomanager = new LegoManager($db);
 $requete = $Legomanager->getOne();
 $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/?key=".API_KEY;
-
   $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -51,7 +50,6 @@ $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/?
 
         $output = curl_exec($ch);
          $obj = json_decode($output);
-        // var_dump($obj);
         print("<h1> Set n°".$obj->{'set_num'}."</h1>");
        print("<p> Référence du set : ".$obj->{'set_num'}."</p>");
        print("<p> Nom du Set : ".$obj->{'name'}."</p>");

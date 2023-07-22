@@ -53,25 +53,14 @@
             $attr = array();
                 foreach($tablego as $article)
             {
-              $url = "https://rebrickable.com/api/v3/lego/sets/".$article->getLego_id()."/?key=".API_KEY;
-
-              $ch = curl_init();
-  
-          curl_setopt($ch, CURLOPT_URL, $url);
-          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); //bidouille cause localhost
-          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); //bidouille cause localhost
-  
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  
-          $output = curl_exec($ch);
-           $obj = json_decode($output);
             echo "<tr>";
             echo "<td>".$article->getLego_id()."</td>";
             echo "<td>".$article->getComplet()."</td>";
             echo "<td>".$article->getFigurine()."</td>";
             echo "<td>".$article->getBoite()."</td>";
             echo "<td>".$article->getNotice()."</td>";
-            echo "<td>".$obj->{'year'}."</td>";
+            echo "<td>".$article->getDate()."</td>";
+          //  var_dump($obj);
             echo "<td><a href='afficher.php?id=".$article->getLego_id()."'>afficher</a></td>";
             if((isset($_SESSION['Role']))&&($_SESSION['Role'] == 'ADMIN')){
             echo "<td><a href='updateLego.php?id=".$article->getLego_id()."'>Modifier</a></td>";

@@ -1,4 +1,4 @@
-/conf.php
+/config/conf.php
 /log/*.log
 *.csv
 start.bat

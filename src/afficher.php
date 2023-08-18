@@ -72,9 +72,29 @@ $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/?
             echo curl_error($ch2);
         }
         curl_close($ch2);
+        print('<img src="'.$obj->{'set_img_url'}.'" alt="image du set" width="500" height="300">');
 
-       print('<img src="'.$obj->{'set_img_url'}.'" alt="image du set" width="500" height="300">');
-   
+        $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/minifigs/?key=".API_KEY;
+  $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); //bidouille cause localhost
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); //bidouille cause localhost
+
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+       print("<h1>Figurines : </h1>");
+        $output = curl_exec($ch);
+         $obj = json_decode($output);
+         foreach($obj->{'results'} as $article)
+         {
+      print("<p> Figurine n°".$article->{'set_num'}."</p>");
+       print("<p> nom de la figurine : ".$article->{'set_name'}."</p>");
+       print("<p> Quantité : ".$article->{'quantity'}."</p>");
+       //print('<img src="'.$article->{'set_img_url'}.'" alt="image du set" width="100" height="60">');
+       //var_dump($obj->{'results'}[0]);
+         }
+
         if (curl_errno($ch)) {
             echo curl_error($ch);
         }
@@ -83,9 +103,9 @@ $url = "https://rebrickable.com/api/v3/lego/sets/".$requete[0]->getLego_id()."/?
         <a class="button1" href='LegoList.php'>Retour à la liste</a>
         </div>
         </main>
-        <footer>
+      <!--  <footer>
         <p>Author: Luidjy Aubel</p>
         <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
-      </footer>
+      </footer>-->
     </body>
 </html>

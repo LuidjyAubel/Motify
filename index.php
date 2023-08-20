@@ -30,6 +30,7 @@
                     }else{
                       echo '<li style="float:right"><a href="./src/connection.php">Login</a></li>';
                     }?>
+                  <li><a href="./src/search.php">Recherche</a></li>
               </ul>
             </nav>
           </header>
@@ -38,6 +39,8 @@
                     <a class="button1" href="./src/connection.php"><span class="TxtBtn">Acceder à la liste des lego</span></a>
             <div class="text">
               <p>Motify est une application web qui permet d'organiser ses set de lego</p>
+              <p>/!\ Mise à jour : la fonction de recherche ce fait sur le nom des sets</p>
+              <p>/!\ Prochaine update : Graphique</p>
               <p>L'application utilise l'API Rebrickable</p>
               <p>Dêpot github du projet <a href="https://github.com/LuidjyAubel/Motify">Motify</a></p>
               <p><a href="https://rebrickable.com">Rebrickable</a></p>
@@ -46,8 +49,8 @@
             </div>
         </main>
         <footer>
-          <p>Author: Luidjy Aubel</p>
+ <!--         <p>Author: Luidjy Aubel</p>
           <p><a target="_blank" href="https://aubel-luidjy.alwaysdata.net/">Portfolio</a></p>
-        </footer>
+        </footer>-->
     </body>
 </html>

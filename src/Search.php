@@ -27,6 +27,7 @@
                       echo  '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
                       }
                   ?>
+                  <li><a href="search.php">Recherche</a></li>
                 </ul>
               </nav>
           </header>
@@ -35,8 +36,9 @@
             <input type="text" name="searchBar" id="searchBar" placeholder="search for a character"/>
           <div id="afficher"></div>
             <script>
-            const searchBar = document.getElementById("searchBar");
-            const div = document.getElementById("afficher");
+ //           const searchBar = document.getElementById("searchBar");
+//         const div = document.getElementById("afficher");
+            /**
             let filteredCharacters = null;
             let data = [];
             async function fe(){
@@ -47,7 +49,6 @@
                 addData(obj.results[i])
               }
               search();
-              console.log(data)
               console.log(data)
             //  console.log(obj.results[0].name);
             }
@@ -86,8 +87,44 @@ function search(){
         }
       }
           });
-}
- 
+}*/
+const searchBar = document.getElementById("searchBar");
+let filteredCharacters = null;
+        const div = document.getElementById("afficher");
+
+        searchBar.addEventListener("keyup", filterAndDisplayData);
+
+        async function filterAndDisplayData() {
+            const searchString = searchBar.value.toLowerCase();
+            // Fetch data from data.json
+            const response = await fetch('../Database/data.json');
+            const data = await response.json();
+            console.log("Fichier json : "+response);
+            console.log("variable data : "+ data);
+            if (searchString.length >= 3) {
+             filteredCharacters = data.filter(character => character.name.toLowerCase().includes(searchString));
+            }
+            div.innerHTML = ""; // Clear previous results
+
+            for (const character of filteredCharacters) {
+                const num = document.createElement('h2');
+                const p = document.createElement('p');
+                const a = document.createElement('a');
+                p.textContent = character.name;
+                num.textContent = character.set_num;
+                a.target="_blank";
+                a.href = character.set_img_url;
+                a.innerText = "Voir plus...";
+                div.appendChild(num);
+                div.appendChild(p);
+                div.appendChild(a);
+            }
+            if (searchBar.value == "" || searchBar.value.length < 3){
+        while (div.firstChild){
+          div.removeChild(div.lastChild);
+        }
+      }
+        }
             </script>
         </div>
         </main>

@@ -25,6 +25,7 @@
                     }else{
                       echo '<li style="float:right"><a href="connection.php">Login</a></li>';
                     }?>
+                    <li><a href="search.php">Recherche</a></li>
                 </ul>
               </nav>
           </header>

@@ -44,7 +44,7 @@
     }
 
     // Rafraîchir le contenu du fichier de log toutes les 5 secondes
-    setInterval(fetchLog, 5000);
+    setInterval(fetchLog, 3000);
 
     // Appeler fetchLog une première fois pour afficher le contenu initial
     fetchLog();

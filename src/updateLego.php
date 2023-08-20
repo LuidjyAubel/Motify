@@ -30,6 +30,7 @@
                             header('Location: ../index.php');
                         }
                   ?>
+                  <li><a href="search.php">Recherche</a></li>
                 </ul>
               </nav>
           </header>

@@ -30,7 +30,7 @@
                     }else{
                       echo '<li style="float:right"><a href="./src/connection.php">Login</a></li>';
                     }?>
-                  <li><a href="./src/search.php">Recherche</a></li>
+                  <li><a href="./src/Search.php">Recherche</a></li>
               </ul>
             </nav>
           </header>

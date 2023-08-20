@@ -27,7 +27,7 @@
                       echo  '<li style="float:right"><a href="deconnect.php">Logout</a></li>';
                       }
                   ?>
-                  <li><a href="search.php">Recherche</a></li>
+                  <li><a href="Search.php">Recherche</a></li>
                 </ul>
               </nav>
           </header>

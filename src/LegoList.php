@@ -46,7 +46,7 @@
                     <th colspan="3">Option</th>
                 </tr>
             <?php
-            include('../config/conf.php');
+            include '../config/conf.php';
             include('../Classes/Manager/Legomanager.php');
             $db = new PDO(DBHOST, DBUSER, DBPASSWORD);
             $Legomanager = new LegoManager($db);

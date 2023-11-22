@@ -1,5 +1,5 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/luidjyaubel/motify/badge/main)](https://www.codefactor.io/repository/github/luidjyaubel/motify/overview/main)
-# Modify 
+# Motify 
 
 <img src=".//Assets/picture/motify.png" alt="drawing" style="width:200px;"/>
 
